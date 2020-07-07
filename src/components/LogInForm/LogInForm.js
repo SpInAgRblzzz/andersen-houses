@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 
 function LogInForm() {
 	const [inputValue, setInputValue] = useState("");
@@ -19,6 +20,7 @@ function LogInForm() {
 				value={inputValue}
 			/>
 			<input type="submit" value="LogIn"></input>
+			<Redirect to="/login" />
 		</form>
 	);
 }
