@@ -14,6 +14,9 @@ function App() {
 				<Route path="/login">
 					<LogInForm />
 				</Route>
+				<Route path="/:topic">
+					<CardsPage />
+				</Route>
 				<Route path="/">
 					<CardsPage />
 				</Route>
