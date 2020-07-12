@@ -1,26 +1,35 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { validateUser } from "../../actionCreators/actionCreators";
 
-function LogInForm() {
+function LogInForm({ user, validateUser }) {
 	const [inputValue, setInputValue] = useState("");
 
 	const handleInputChange = (e) => {
-		setInputValue(e.value);
+		setInputValue(e.target.value);
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		validateUser(inputValue.trim());
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<input
-				placeholder="LogIn"
-				onChange={handleInputChange}
-				value={inputValue}
-			/>
-			<input type="submit" value="LogIn"></input>
-		</form>
+		<>
+			{user ? <Redirect to="/" /> : null}
+			<form onSubmit={handleSubmit}>
+				<input
+					placeholder="LogIn"
+					onChange={handleInputChange}
+					value={inputValue}
+				/>
+				<input type="submit" value="LogIn"></input>
+			</form>
+		</>
 	);
 }
 
-export default LogInForm;
+export default connect((state) => ({ user: state.user }), { validateUser })(
+	LogInForm
+);

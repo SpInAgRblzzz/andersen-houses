@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 const axios = require("axios");
 
-function CardsPage() {
+function CardsPage({ user }) {
 	useEffect(() => {
 		axios
 			.get(`https://anapioficeandfire.com/api/houses`)
@@ -13,10 +14,10 @@ function CardsPage() {
 
 	return (
 		<>
-			{/* <Redirect to="/login" /> */}
-			<li></li>
+			{user ? null : <Redirect to="/login" />}
+			<li>{user.name}</li>
 		</>
 	);
 }
 
-export default CardsPage;
+export default connect((state) => ({ user: state.user }))(CardsPage);
