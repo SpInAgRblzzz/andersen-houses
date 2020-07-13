@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Redirect, useParams } from "react-router-dom";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 const axios = require("axios");
 
 function CardsPage({ user }) {
@@ -27,7 +28,13 @@ function CardsPage({ user }) {
 					{cardList.map((item) => {
 						const urlArray = item.url.split("/");
 						const key = urlArray[urlArray.length - 1];
-						return <li key={key}>{item.name}</li>;
+						return (
+							<li key={key}>
+								<Link to={`${topic}/${key}`}>
+									{item.name ? item.name : "Noname"}
+								</Link>
+							</li>
+						);
 					})}
 				</ul>
 			) : (
