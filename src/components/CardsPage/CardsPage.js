@@ -31,7 +31,11 @@ function CardsPage({ user }) {
 						return (
 							<li key={key}>
 								<Link to={`${topic}/${key}`}>
-									{item.name ? item.name : "Noname"}
+									{item.name
+										? item.name
+										: item.name === ""
+										? item.aliases[0]
+										: "Noname"}
 								</Link>
 							</li>
 						);
