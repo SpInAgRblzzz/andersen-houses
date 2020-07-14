@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LogInForm from "./components/LogInForm/LogInForm";
 import Navigation from "./components/Navigation/Navigation";
 import CardsPage from "./components/CardsPage/CardsPage";
+import TopicItemPage from "./components/TopicItemPage/TopicItemPage";
 
 function App() {
 	return (
@@ -13,6 +14,9 @@ function App() {
 			<Switch>
 				<Route path="/login">
 					<LogInForm />
+				</Route>
+				<Route path="/:topic/:id">
+					<TopicItemPage />
 				</Route>
 				<Route path="/:topic">
 					<CardsPage />
