@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Redirect, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import BooksCard from "./Cards/BooksCard";
+import CharactersCard from "./Cards/CharactersCard";
+import HousesCard from "./Cards/HousesCard";
 const axios = require("axios");
 
 function CardsPage({ user }) {
@@ -19,6 +22,24 @@ function CardsPage({ user }) {
 		}
 	}, [user, topic]);
 
+	function getCard(topic, content) {
+		const name = content.name ? content.name : content.aliases[0];
+
+		if (topic === "books") {
+			return <BooksCard name={name} />;
+		}
+
+		if (topic === "characters") {
+			return <CharactersCard name={name} />;
+		}
+
+		if (topic === "houses") {
+			return <HousesCard name={name} />;
+		}
+
+		return "no card for this";
+	}
+
 	return (
 		<>
 			{!user ? (
@@ -31,11 +52,12 @@ function CardsPage({ user }) {
 						return (
 							<li key={key}>
 								<Link to={`${topic}/${key}`}>
-									{item.name
-										? item.name
+									{getCard(topic, item)}
+									{/* !gotData
+										? "noname"
 										: item.name === ""
 										? item.aliases[0]
-										: "Noname"}
+										: item.name */}
 								</Link>
 							</li>
 						);
