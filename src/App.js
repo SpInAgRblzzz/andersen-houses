@@ -9,6 +9,11 @@ import TopicItemPage from "./components/TopicItemPage/TopicItemPage";
 function App() {
 	return (
 		<Router>
+			<link
+				rel="stylesheet"
+				href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+			/>
+
 			<Navigation />
 
 			<Switch>
