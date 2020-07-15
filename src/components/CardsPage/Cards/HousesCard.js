@@ -1,7 +1,7 @@
 import React from "react";
 
 function HousesCard({ name }) {
-	return <p>HousesCard, {name}</p>;
+	return <p>{name}</p>;
 }
 
 export default HousesCard;

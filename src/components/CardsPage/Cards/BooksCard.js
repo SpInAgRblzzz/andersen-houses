@@ -1,7 +1,7 @@
 import React from "react";
 
 function BooksCard({ name }) {
-	return <p>BooksCard, {name}</p>;
+	return <p>{name}</p>;
 }
 
 export default BooksCard;
